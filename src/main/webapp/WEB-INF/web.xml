@@ -1,0 +1,25 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Servlet Sample</display-name>
+
+  <!-- Servlet mapping -->
+  <servlet>
+    <servlet-name>Sample</servlet-name>
+    <servlet-class>br.ufscar.servlet.Sample</servlet-class>
+  </servlet>
+
+  <!-- JSP Mapping -->
+  <servlet>
+    <servlet-name>SampleJsp</servlet-name>
+    <jsp-file>/jsp/sample.jsp</jsp-file>
+  </servlet>
+
+  <!-- Application routes -->
+  <servlet-mapping>
+    <servlet-name>SampleJsp</servlet-name>
+    <url-pattern>/sample</url-pattern>
+  </servlet-mapping>
+</web-app>
