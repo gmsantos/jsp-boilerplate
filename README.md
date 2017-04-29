@@ -13,6 +13,8 @@ A JSP based conteinered application with Maven, Docker, MySQL and some samples.
 
 ## Important notes
 
-`web.xml` file is located on `src/main/webapp/WEB-INF`
+`web.xml` file is located on `src/main/webapp/WEB-INF`.
 
-This project is in package `br.ufscar`
+This project is in package `br.ufscar`.
+
+A database dump file could be placed on `database\data` folder. When docker starts MySQL all scrips in that folder will be started.
