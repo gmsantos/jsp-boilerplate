@@ -3,6 +3,8 @@ version: "3"
 volumes:
   mysql-data:
     driver: local
+  mvn-deps:
+    driver: local
 
 services:
   tomcat:
@@ -11,7 +13,7 @@ services:
       - "8080:8080"
       - "9009:8009"
     volumes:
-      - ./target/jsp-boilerplate-1.0-SNAPSHOT:/usr/local/tomcat/webapps/ROOT
+      - ./target/jsp-boilerplate-develop:/usr/local/tomcat/webapps/ROOT
     depends_on:
       - mvn
       - mysql
@@ -30,4 +32,5 @@ services:
     command: install
     volumes:
       - .:/usr/src/app
+      - mvn-deps:/root/.m2
     working_dir: /usr/src/app

@@ -5,10 +5,10 @@
 
   <groupId>br.ufscar</groupId>
   <artifactId>jsp-boilerplate</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>develop</version>
   <packaging>war</packaging>
 
-  <name>jsp-boilerplate</name>
+  <name>JSP Boilerplate in containers</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
