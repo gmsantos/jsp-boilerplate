@@ -13,7 +13,7 @@ services:
       - "8080:8080"
       - "9009:8009"
     volumes:
-      - ./target/jsp-boilerplate-develop:/usr/local/tomcat/webapps/ROOT
+      - ./target/java-boilerplate-develop:/usr/local/tomcat/webapps/ROOT
     depends_on:
       - mvn
       - mysql

@@ -11,7 +11,7 @@
     <servlet-class>br.ufscar.servlet.Sample</servlet-class>
   </servlet>
 
-  <!-- JSP Mapping -->
+  <!-- JSP Mapping, necessary only if JSP is inside WEB-INF -->
   <servlet>
     <servlet-name>SampleJsp</servlet-name>
     <jsp-file>/jsp/sample.jsp</jsp-file>
@@ -19,7 +19,7 @@
 
   <!-- Application routes -->
   <servlet-mapping>
-    <servlet-name>SampleJsp</servlet-name>
+    <servlet-name>Sample</servlet-name>
     <url-pattern>/sample</url-pattern>
   </servlet-mapping>
 </web-app>

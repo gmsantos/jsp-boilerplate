@@ -4,11 +4,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>br.ufscar</groupId>
-  <artifactId>jsp-boilerplate</artifactId>
+  <artifactId>java-boilerplate</artifactId>
   <version>develop</version>
   <packaging>war</packaging>
 
-  <name>JSP Boilerplate in containers</name>
+  <name>Java Boilerplate in containers</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
