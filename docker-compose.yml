@@ -12,6 +12,9 @@ services:
       - "9009:8009"
     volumes:
       - ./target/jsp-boilerplate-1.0-SNAPSHOT:/usr/local/tomcat/webapps/app
+    depends_on:
+      - maven
+      - mysql
 
   mysql:
     image: mysql
