@@ -6,8 +6,7 @@ A JSP based conteinered application with Maven, Docker, MySQL and some samples.
 
 1. Install Docker in your host machine.
 1. Run `docker-compose pull` to download container images
-1. Install maven on your host (maybe I will move this to a container)
-1. Execute `mvn install` to build Java classes and download .jar files
+1. Execute `docker-compose run maven mvn install` to build Java classes and download .jar files
 1. Launch with `docker-compose up` and open your browser
 1. The default address is `http://localhost:8080` but this can be changed in `docker-compose.yml`
 
