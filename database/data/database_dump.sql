@@ -1,6 +1,5 @@
 USE mydb;
 
-
 -- Create your tables here
 DROP TABLE IF EXISTS sample;
 CREATE TABLE sample (
