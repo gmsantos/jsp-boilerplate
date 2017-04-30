@@ -17,3 +17,4 @@ target/
 
 # Not sure if VS Code or Maven generated this
 .classpath
+.project
