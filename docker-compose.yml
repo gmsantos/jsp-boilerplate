@@ -11,7 +11,7 @@ services:
       - "8080:8080"
       - "9009:8009"
     volumes:
-      - ./target/jsp-boilerplate-1.0-SNAPSHOT:/usr/local/tomcat/webapps/servlet-sample
+      - ./target/jsp-boilerplate-1.0-SNAPSHOT:/usr/local/tomcat/webapps/app
 
   mysql:
     image: mysql
@@ -23,6 +23,7 @@ services:
 
   maven:
     image: maven:alpine
+    command: "mvn install"
     volumes:
       - .:/usr/src/app
     working_dir: /usr/src/app
