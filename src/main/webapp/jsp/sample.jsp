@@ -56,7 +56,7 @@
                         ResultSet rs;
                         Statement stmt = connection.createStatement();
 
-                        String sql = "select id, nome from sample";
+                        String sql = "select id, sample from sample";
                         rs = stmt.executeQuery(sql);
 
                     %>

@@ -13,7 +13,7 @@ services:
     volumes:
       - ./target/jsp-boilerplate-1.0-SNAPSHOT:/usr/local/tomcat/webapps/app
     depends_on:
-      - maven
+      - mvn
       - mysql
 
   mysql:
@@ -24,9 +24,10 @@ services:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=mydb
 
-  maven:
+  mvn:
     image: maven:alpine
-    command: "mvn install"
+    entrypoint: mvn
+    command: install
     volumes:
       - .:/usr/src/app
     working_dir: /usr/src/app
