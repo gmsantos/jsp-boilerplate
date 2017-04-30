@@ -12,6 +12,8 @@ A JSP based conteiner application with Maven, Docker, MySQL and some samples.
 
 ## Important notes
 
+Use Maven [Standard Directory Layout](https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html) to organize the app.
+
 `web.xml` file is located on `src/main/webapp/WEB-INF`.
 
 This project is in package `br.ufscar`.
