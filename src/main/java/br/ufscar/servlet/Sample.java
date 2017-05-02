@@ -4,7 +4,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.RequestDispatcher;
 import java.io.*;
 import java.sql.*;
 import javax.sql.*;
@@ -69,11 +68,8 @@ public class Sample extends HttpServlet {
     }
 
     private void dispachTo(String page, HttpServletRequest request, HttpServletResponse response) throws ServletException {
-        RequestDispatcher requestDispatcher;
-        requestDispatcher = request.getRequestDispatcher("/WEB-INF/pages/sample.jsp");
-
         try {
-            requestDispatcher.forward(request, response);
+            request.getRequestDispatcher(page).forward(request, response);
         } catch (IOException e) {
             e.printStackTrace();
         }
