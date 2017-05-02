@@ -43,6 +43,7 @@
 
     request.setAttribute("output", output);
 %>
+
 <t:master>
     <jsp:body>
         ${output}

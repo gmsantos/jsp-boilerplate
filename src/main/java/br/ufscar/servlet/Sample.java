@@ -6,8 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.sql.*;
-import javax.sql.*;
-import javax.naming.*;
 
 public class Sample extends HttpServlet {
 
