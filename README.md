@@ -1,6 +1,6 @@
-# JSP boilerplate
+# Java boilerplate
 
-A JSP based conteiner application with Maven, Docker, MySQL and some samples.
+A Java based conteiner application with Maven, Docker, MySQL and some samples.
 
 ## How to use
 
