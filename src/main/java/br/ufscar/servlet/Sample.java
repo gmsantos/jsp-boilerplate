@@ -4,34 +4,82 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.PrintWriter;
-import java.io.IOException;
-import org.apache.commons.io.IOUtils;
+import javax.servlet.RequestDispatcher;
+import java.io.*;
+import java.sql.*;
+import javax.sql.*;
+import javax.naming.*;
 
 public class Sample extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        StringBuilder data = new StringBuilder();
-
-        ClassLoader classLoader = getClass().getClassLoader();
-        String html = "";
-
-        data.append("<p>Sample</p>");
-        data.append(String.format("<p>Sample from URL %s</p>", req.getParameter("sample")));
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+        StringBuilder output = new StringBuilder();
 
         try {
-            html = IOUtils.toString(classLoader.getResourceAsStream("templates/inscricao.html"), "UTF-8");
+            Connection connection = prepareConnection();
+            Statement stmt = connection.createStatement();
+
+            ResultSet rs = stmt.executeQuery("select id, sample from sample");
+            connection.close();
+
+            while (rs.next()) {
+                output.append(
+                    String.format(
+                        "<p>ID: %s Sample: %s</p>",
+                        rs.getString(1),
+                        rs.getString(2)
+                    )
+                );
+            }
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+
+        request.setAttribute("output", output);
+
+        dispachTo("/WEB-INF/pages/sample.jsp", request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+        StringBuilder output = new StringBuilder();
+
+        try {
+            Connection connection = prepareConnection();
+
+            String query = "insert into sample (sample) VALUES (?)";
+            String sample = request.getParameter("sample");
+
+            PreparedStatement stmt = connection.prepareStatement(query);
+
+            stmt.setString(1, sample);
+            stmt.executeUpdate();
+
+            connection.close();
+
+            output.append(String.format("<p>You have inserted: %s</p>", sample));
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+
+        request.setAttribute("output", output);
+
+        dispachTo("/WEB-INF/pages/sample.jsp", request, response);
+    }
+
+    private void dispachTo(String page, HttpServletRequest request, HttpServletResponse response) throws ServletException {
+        RequestDispatcher requestDispatcher;
+        requestDispatcher = request.getRequestDispatcher("/WEB-INF/pages/sample.jsp");
+
+        try {
+            requestDispatcher.forward(request, response);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        html = html.replace("{{{CONTENT}}}", data);
-
-        resp.setContentType("text/html; charset=UTF-8");
-        PrintWriter responseOutput = resp.getWriter();
-
-        responseOutput.write(html);
     }
-
+    private Connection prepareConnection() throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.jdbc.Driver");
+        return DriverManager.getConnection("jdbc:mysql://mysql:3306/mydb?autoReconnect=true","root","root");
+    }
 }
